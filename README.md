@@ -1,46 +1,84 @@
-# PostgreSQL Fulltext Search
+# Полнотекстовый поиск в PostgreSQL
 
 [![MIT License][license-shield]][license-url]
 
-## Overview
+## Обзор
 
-This repository demonstrates fulltext search methods and possibilities avaliable in PostgreSQL.
+Данный репозиторий демонстрирует методы и возможности полнотекстового поиска, доступные в PostgreSQL.
 
-## Getting Started
-
-TODO
-
-### Prerequisites
-
-- [Docker](https://docs.docker.com/get-docker/)
-
-Specifically make sure you have Docker Engine and Docker Compose installed.
-
-### Installation
+## Начало работы
 
 TODO
 
-### Usage
+### Перед использованием
+
+- Установите [Docker](https://docs.docker.com/get-docker/)
+
+Убедитесь, что у вас установлены `Docker Engine` и `Docker Compose`.
+
+> [!NOTE]
+> В зависимости от локальных настроек для вызова `docker` может потребоваться `sudo`.
+
+```sh
+docker version
+```
+
+```sh
+docker compose version
+```
+
+### Установка
+
+1. Откройте терминал и cкачайте репозиторий:
+
+    ```sh
+    git clone https://github.com/artem-burashnikov/postgresql-fulltext-search.git
+    ```
+
+2. Переместитесь в корень проекта:
+
+    ```sh
+    cd postgresql-fulltext-search/
+    ```
+
+3. Запустите контейнеры `postgresql` и `pgadmin4` с помощью Docker Compose:
+
+    ```sh
+    docker compose up -d
+    ```
+
+4. Убедиться, что контейнеры запущены:
+
+    ```sh
+    docker container ps
+    ```
+
+### Использование
 
 TODO
 
-### Clean up Docker containers and images
+### Очистка контейнеров и образов Docker
 
-To clean up Docker images and containers execute the following commands:
+Чтобы очистить локальные образы и контейнеры, выполните следующие команды:
 
-1. Remove **_all_** running and stopped docker containers:
+> [!WARNING]
+> Следующие команды очистят все локальные данные об образах и контейнерах.
+
+1. Удалить **_все_** запущенные и остановленные контейнеры
+
     ```sh
     docker container rm -f $(docker container ls -aq)
     ```
 
-2. Remove **_all_** docker images
+2. Удалить **_все_** образы
+
     ```sh
     docker image rm -f $(docker image ls -aq)
     ```
 
-## License
+## Лицензия
 
-The project is licensed under an [Unlicense][license-url].
+Проект лицензируется под [Unlicense][license-url].
 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [license-shield]: https://img.shields.io/github/license/artem-burashnikov/postgresql-fulltext-search.svg?style=for-the-badge&color=blue
