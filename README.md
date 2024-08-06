@@ -12,7 +12,9 @@ TODO
 
 ### Prerequisites
 
-TODO
+- [Docker](https://docs.docker.com/get-docker/)
+
+Specifically make sure you have Docker Engine and Docker Compose installed.
 
 ### Installation
 
@@ -21,6 +23,20 @@ TODO
 ### Usage
 
 TODO
+
+### Clean up Docker containers and images
+
+To clean up Docker images and containers execute the following commands:
+
+1. Remove **_all_** running and stopped docker containers:
+    ```sh
+    docker container rm -f $(docker container ls -aq)
+    ```
+
+2. Remove **_all_** docker images
+    ```sh
+    docker image rm -f $(docker image ls -aq)
+    ```
 
 ## License
 
