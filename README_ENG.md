@@ -8,8 +8,6 @@ This repository demonstrates fulltext search methods and possibilities avaliable
 
 ## Getting Started
 
-TODO
-
 ### Prerequisites
 
 - Install [Docker](https://docs.docker.com/get-docker/)
@@ -47,7 +45,7 @@ docker compose version
     docker compose up -d
     ```
 
-4. Verify that the containers are running:
+4. Verify that containers are running:
 
     ```sh
     docker container ps
@@ -59,7 +57,7 @@ TODO
 
 ### Cleaning up Docker containers and images
 
-To clean up local images and containers, run the following commands:
+To clean up local images and containers run the following commands:
 
 > [!WARNING]
 > The following commands will clear all local image and container data.

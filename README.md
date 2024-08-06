@@ -8,8 +8,6 @@
 
 ## Начало работы
 
-TODO
-
 ### Перед использованием
 
 - Установите [Docker](https://docs.docker.com/get-docker/)
@@ -47,7 +45,7 @@ docker compose version
     docker compose up -d
     ```
 
-4. Убедиться, что контейнеры запущены:
+4. Убедитесь, что контейнеры запущены:
 
     ```sh
     docker container ps
