@@ -1,5 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS text_2024;
 
+ALTER DATABASE postgres SET search_path TO text_2024, public;
+
 CREATE TABLE IF NOT EXISTS text_2024.authors (
     author_id INTEGER NOT NULL,
     author_name character varying(32) NOT NULL,
