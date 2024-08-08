@@ -1,7 +1,3 @@
-#!/bin/bash
-set -e
-
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
 CREATE SCHEMA IF NOT EXISTS text_2024;
 
 CREATE TABLE IF NOT EXISTS text_2024.authors (
@@ -19,4 +15,3 @@ CREATE TABLE IF NOT EXISTS text_2024.literature (
     CONSTRAINT fk_literature_authors FOREIGN KEY (author_id)
         REFERENCES text_2024.authors(author_id)
 );
-EOSQL
