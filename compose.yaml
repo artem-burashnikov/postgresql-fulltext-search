@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: postgres
     volumes:
       - local_pgdata:/var/lib/postgresql/data
-      - ./docker_scripts/init-database.sql:/docker-entrypoint-initdb.d/1-init-database.sql
+      - ./scripts/init-database.sql:/docker-entrypoint-initdb.d/1-init-database.sql
     networks:
       - postgres
     ports:
@@ -26,7 +26,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: admin
     volumes:
       - pgadmin-data:/var/lib/pgadmin
-      - ./servers.json:/pgadmin4/servers.json
+      - ./config/servers.json:/pgadmin4/servers.json
     networks:
       - postgres
     ports:

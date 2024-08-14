@@ -5,5 +5,8 @@ ALTER DATABASE postgres SET search_path TO text_2024, public;
 CREATE TABLE IF NOT EXISTS text_2024.classical_literature(
     id SERIAL,
     author character varying(32) NOT NULL,
-    literature TEXT NOT NULL
+    title character varying(32) NOT NULL,
+    text TEXT NOT NULL
 );
+
+ALTER TABLE text_2024.classical_literature ADD CONSTRAINT pk_classical_literature PRIMARY KEY (id);
