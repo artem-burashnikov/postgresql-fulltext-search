@@ -1,6 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS text_2024;
 
-ALTER DATABASE postgres SET search_path TO text_2024, public;
+ALTER DATABASE postgres
+    SET search_path TO text_2024, public;
 
 CREATE TABLE IF NOT EXISTS text_2024.classical_literature(
     id SERIAL,
@@ -9,4 +10,5 @@ CREATE TABLE IF NOT EXISTS text_2024.classical_literature(
     text TEXT NOT NULL
 );
 
-ALTER TABLE text_2024.classical_literature ADD CONSTRAINT pk_classical_literature PRIMARY KEY (id);
+ALTER TABLE text_2024.classical_literature
+    ADD CONSTRAINT pk_classical_literature PRIMARY KEY (id);
