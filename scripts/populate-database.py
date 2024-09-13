@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import List
 
 import psycopg2
+import sys
 
 DB_NAME = "postgres"
 USER = "postgres"
@@ -40,26 +41,47 @@ def parse_file_name(input_str: str) -> tuple[str, str]:
 
 if __name__ == "__main__":
 
-    EXAMPLES_DIR = get_project_root() / "examples"
+    ROOT_DIR = get_project_root()
+    EXAMPLES_DIR = ROOT_DIR / "examples"
+    SCRIPT_PATH = ROOT_DIR / "scripts" / "init-database.sql"
 
     with psycopg2.connect(
         dbname=DB_NAME, user=USER, password=PASSWORD, host=HOST, port=PORT
     ) as conn:
+        print(f"SUCCESS Connected to database {DB_NAME} as {USER}")
+
         with conn.cursor() as curs:
+            try:
+                with open(SCRIPT_PATH, 'r') as sql_file:
+                    sql_src = sql_file.read()
+                    curs.execute(sql_src)
+                    conn.commit()
+            except Exception as e:
+                conn.close()
+                print(f"FAIL SQL-script failed to execute: {e}")
+                sys.exit(1)
 
             for text_file_path in list_files_in_directory(EXAMPLES_DIR):
-
                 author, title = parse_file_name(Path(text_file_path).stem)
 
                 with open(text_file_path, encoding="utf-8", mode="r") as file:
                     text = file.read()
 
-                    curs.execute(
-                        """
-                        INSERT INTO classical_literature(author, title, text)
-                        VALUES(%s, %s, %s);
-                        """,
-                        (author, title, text),
-                    )
-
+                    try:
+                        print(f"Inserting {author} - {title}...", end="")
+                        curs.execute(
+                            """
+                            INSERT INTO text_2024.classical_literature(author, title, text)
+                            VALUES(%s, %s, %s);
+                            """,
+                            (author, title, text),
+                        )
+                    except Exception as e:
+                        conn.close()
+                        print(f"\nFAIL Couldn't insert data into the table: {e}")
+                        print(f"author: {author}, title: {title}")
+                        sys.exit(1)
+                print("OK")
     conn.close()
+    print("Script finished succesfully")
+    sys.exit(0)
