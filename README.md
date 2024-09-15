@@ -49,10 +49,6 @@ docker compose version
     docker container ps
     ```
 
-## Использование
-
-TODO
-
 ## Остановка работы Docker Compose
 
 Остановить работу Docker Compose:
