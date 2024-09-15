@@ -1,14 +1,18 @@
+import os
 from pathlib import Path
 from typing import List
+from dotenv import load_dotenv
 
 import psycopg2
 import sys
 
-DB_NAME = "postgres"
-USER = "postgres"
-PASSWORD = "postgres"
-HOST = "localhost"
-PORT = "5432"
+load_dotenv(".env")
+
+DB_NAME = os.getenv("db_name")
+USER = os.getenv("user")
+PASSWORD = os.getenv("password")
+HOST = os.getenv("host")
+PORT = os.getenv("port")
 
 
 def get_project_root() -> Path:
@@ -52,7 +56,7 @@ if __name__ == "__main__":
 
         with conn.cursor() as curs:
             try:
-                with open(SCRIPT_PATH, 'r') as sql_file:
+                with open(SCRIPT_PATH, "r") as sql_file:
                     sql_src = sql_file.read()
                     curs.execute(sql_src)
                     conn.commit()
