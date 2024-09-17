@@ -49,6 +49,10 @@ docker compose version
     ```sh
     docker container ps
     ```
+5. Локальный сервер доступен по адресу:
+   ```sh
+   localhost:5050
+   ```
 
 ## Остановка работы Docker Compose
 
